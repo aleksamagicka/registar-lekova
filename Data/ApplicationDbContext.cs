@@ -13,5 +13,7 @@ namespace diplomskirad.Data
         {
 
         }
+
+        public DbSet<Lek> Lekovi { get; set; }
     }
 }

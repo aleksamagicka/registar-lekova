@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using diplomskirad.Data;
@@ -11,9 +12,11 @@ using diplomskirad.Data;
 namespace diplomskirad.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230306123723_LekModel")]
+    partial class LekModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -315,11 +318,11 @@ namespace diplomskirad.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateOnly>("DatumResenja")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumResenja")
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateOnly>("DatumVazenjaResenja")
-                        .HasColumnType("date");
+                    b.Property<DateTime>("DatumVazenjaResenja")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("EAN")
                         .IsRequired()
@@ -357,17 +360,15 @@ namespace diplomskirad.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("SifraNosiocaDozvole")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SifraNosiocaDozvole")
+                        .HasColumnType("integer");
 
                     b.Property<string>("SifraProizvoda")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("SifraProizvodjaca")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("SifraProizvodjaca")
+                        .HasColumnType("integer");
 
                     b.Property<string>("SifraProizvodjacaUSaradnji")
                         .IsRequired()
