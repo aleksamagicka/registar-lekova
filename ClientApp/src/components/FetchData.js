@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import authService from './api-authorization/AuthorizeService'
+//import authService from './api-authorization/AuthorizeService'
 
 export class FetchData extends Component {
   static displayName = FetchData.name;
@@ -18,19 +18,19 @@ export class FetchData extends Component {
       <table className="table table-striped" aria-labelledby="tableLabel">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
+            <th>Vrsta resenja</th>
+            <th>Naziv leka</th>
+            <th>INN</th>
+            <th>Rezim reizdavanja</th>
           </tr>
         </thead>
         <tbody>
           {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+            <tr key={forecast.id}>
+              <td>{forecast.vrstaResenja}</td>
+              <td>{forecast.nazivLeka}</td>
+              <td>{forecast.inn}</td>
+              <td>{forecast.rezimReizdavanja}</td>
             </tr>
           )}
         </tbody>
@@ -53,8 +53,8 @@ export class FetchData extends Component {
   }
 
   async populateWeatherData() {
-    const token = await authService.getAccessToken();
-    const response = await fetch('weatherforecast', {
+      const token = null; // await authService.getAccessToken();
+      const response = await fetch('lekovi', {
       headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
     });
     const data = await response.json();
