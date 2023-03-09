@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace diplomskirad.Migrations
+namespace RegistarLekova.Migrations
 {
     /// <inheritdoc />
     public partial class LekModel : Migration

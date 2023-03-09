@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration;
 
-namespace diplomskirad.Data
+namespace RegistarLekova.Data
 {
     public class Lek
     {

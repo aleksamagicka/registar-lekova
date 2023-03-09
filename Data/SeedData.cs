@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Net;
 using System.Text;
 
-namespace diplomskirad.Data;
+namespace RegistarLekova.Data;
 
 public static class SeedData
 {

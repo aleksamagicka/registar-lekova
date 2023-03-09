@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace diplomskirad.Migrations
+namespace RegistarLekova.Migrations
 {
     /// <inheritdoc />
     public partial class DodaciLeku : Migration

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.AspNetCore.Mvc;
 
-namespace diplomskirad.Controllers
+namespace RegistarLekova.Controllers
 {
     public class OidcConfigurationController : Controller
     {

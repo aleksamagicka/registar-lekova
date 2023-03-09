@@ -1,4 +1,4 @@
-namespace diplomskirad
+namespace RegistarLekova
 {
     public class WeatherForecast
     {

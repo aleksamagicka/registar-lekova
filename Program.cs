@@ -1,10 +1,10 @@
-using diplomskirad.Data;
-using diplomskirad.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using RegistarLekova.Data;
+using RegistarLekova.Models;
 
-namespace diplomskirad;
+namespace RegistarLekova;
 
 public class Program
 {

@@ -1,8 +1,8 @@
-﻿using diplomskirad.Data;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using RegistarLekova.Data;
 
-namespace diplomskirad.Controllers;
+namespace RegistarLekova.Controllers;
 
 [ApiController]
 [Route("[controller]")]

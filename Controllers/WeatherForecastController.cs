@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace diplomskirad.Controllers
+namespace RegistarLekova.Controllers
 {
     [Authorize]
     [ApiController]
