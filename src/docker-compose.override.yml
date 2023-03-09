@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  registarlekova:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ConnectionStrings__DefaultConnection=User ID=postgres;Password=root;Server=db;Port=5432;Database=registarlekova;Pooling=true
+    ports:
+      - "80"
+      - "443"
+      - "5432:5432"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
