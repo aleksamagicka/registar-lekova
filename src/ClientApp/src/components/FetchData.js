@@ -1,7 +1,7 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 import MaterialReactTable from 'material-react-table';
 import Table from 'react-bootstrap/Table';
-import { ExportToCsv } from 'export-to-csv';
+import { ExportToCsv } from 'export-to-csv-fix-source-map';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
 
 //Material-UI Imports
