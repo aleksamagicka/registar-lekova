@@ -1,6 +1,4 @@
 ﻿import React, { Component } from 'react';
-import { useMemo } from 'react';
-//import authService from './api-authorization/AuthorizeService'
 import MaterialReactTable from 'material-react-table';
 import Table from 'react-bootstrap/Table';
 import { ExportToCsv } from 'export-to-csv';
@@ -9,11 +7,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 //Material-UI Imports
 import {
     Box,
-    Button,
-    ListItemIcon,
-    MenuItem,
-    Typography,
-    TextField,
+    Button
 } from '@mui/material';
 
 export class FetchData extends Component {
@@ -21,11 +15,11 @@ export class FetchData extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { forecasts: [], loading: true };
+        this.state = { drugs: [], loading: true };
     }
 
     componentDidMount() {
-        this.populateWeatherData();
+        this.populateDrugData();
     }
 
     static columns = [
@@ -89,7 +83,7 @@ export class FetchData extends Component {
         this.csvExporter.generateCsv(this.state.forecasts);
     };
 
-    static renderForecastsTable(forecasts) {
+    static renderDrugData(forecasts) {
         return <MaterialReactTable columns={this.columns} data={forecasts} enableStickyHeader initialState={{ showColumnFilters: true }}
             renderDetailPanel={({ row }) => (
                 <Box
@@ -211,8 +205,8 @@ export class FetchData extends Component {
 
     render() {
         let contents = this.state.loading
-            ? <p><em>Loading...</em></p>
-            : FetchData.renderForecastsTable(this.state.forecasts);
+            ? <p><em>Učitava se...</em></p>
+            : FetchData.renderDrugData(this.state.drugs);
 
         return (
             <div>
@@ -222,12 +216,9 @@ export class FetchData extends Component {
         );
     }
 
-    async populateWeatherData() {
-        const token = null; // await authService.getAccessToken();
-        const response = await fetch('lekovi', {
-            headers: !token ? {} : { 'Authorization': `Bearer ${token}` }
-        });
+    async populateDrugData() {
+        const response = await fetch('lekovi');
         const data = await response.json();
-        this.setState({ forecasts: data, loading: false });
+        this.setState({ drugs: data, loading: false });
     }
 }
