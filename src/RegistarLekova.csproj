@@ -39,6 +39,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Areas\Identity\Pages\Account\Manage\UpdateDb" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="lekovi_humani.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

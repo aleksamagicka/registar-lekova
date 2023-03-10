@@ -1,0 +1,29 @@
+﻿@page
+@model UpdateDbModel
+@{
+    ViewData["Title"] = "Ažuriranje baze lekova";
+    ViewData["ActivePage"] = ManageNavPages.UpdateDb;
+}
+
+<h3>@ViewData["Title"]</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form enctype="multipart/form-data" method="post">
+            <dl>
+                <dt>
+                    <label asp-for="FormFile" class="form-label"></label>
+                </dt>
+                <dd>
+                    <input asp-for="FormFile" type="file" class="form-control">
+                    <span asp-validation-for="FormFile"></span>
+                </dd>
+            </dl>
+            <input asp-page-handler="Upload" class="btn btn-primary" type="submit" value="Pošalji" />
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

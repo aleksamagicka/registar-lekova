@@ -3,6 +3,7 @@ using CsvHelper.Configuration;
 using System.Globalization;
 using System.Net;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace RegistarLekova.Data;
 
@@ -16,6 +17,18 @@ public static class SeedData
             return;   // DB has been seeded
         }
 
+        InsertLekovi(context, new StreamReader("lekovi_humani.csv", Encoding.UTF8).ReadToEnd());
+    }
+
+    public static void InsertLekovi(ApplicationDbContext context, string csvContents, bool dropLekovi = false)
+    {
+        if (dropLekovi)
+        {
+            context.Database.ExecuteSqlRaw("TRUNCATE \"Lekovi\";");
+        }
+
+        csvContents = WebUtility.HtmlDecode(csvContents);
+
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";",
@@ -24,14 +37,13 @@ public static class SeedData
             HasHeaderRecord = false
         };
 
-        var csvContents = WebUtility.HtmlDecode(new StreamReader("lekovi_humani.csv", Encoding.UTF8).ReadToEnd());
-
         using (var csv = new CsvReader(new StringReader(csvContents), config))
         {
             csv.Context.RegisterClassMap<LekMap>();
             var records = csv.GetRecords<Lek>().ToList();
             context.Lekovi.AddRange(records);
         }
+
         context.SaveChanges();
     }
 }
