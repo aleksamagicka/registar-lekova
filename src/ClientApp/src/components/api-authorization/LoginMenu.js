@@ -49,7 +49,7 @@ export class LoginMenu extends Component {
       return (<Fragment>
           <div class="vr"></div>
       <NavItem>
-        <NavLink tag={Link} className="text-dark" to={profilePath}>Hello {userName}</NavLink>
+        <NavLink tag={Link} className="text-dark" to={profilePath}>{userName}</NavLink>
       </NavItem>
       <NavItem>
         <NavLink replace tag={Link} className="text-dark" to={logoutPath} state={logoutState}>Logout</NavLink>
