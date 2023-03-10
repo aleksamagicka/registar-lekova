@@ -210,7 +210,6 @@ export class FetchData extends Component {
 
         return (
             <div>
-                <h1 id="tableLabel">Registar lekova</h1>
                 {contents}
             </div>
         );
