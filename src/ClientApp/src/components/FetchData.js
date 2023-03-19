@@ -69,8 +69,10 @@ export class FetchData extends Component {
         showLabels: true,
         useBom: true,
         useKeysAsHeaders: false,
-        headers: ["id", "vrsta_resenja", "naziv_leka", "inn", "rezim_reizdavanja", "oblik_doza", "broj_resenja", "datum_resenja", "datum_vazenja_resenja", "proizvodjac",
-        "nosilac_dozvole", "atc", "ean", "jkl", "vrsta", "sifra_proizvoda", "sifra_proizvoda_u_saradnji", "oblik_saradnje", "sifra_proizvodjaca", "sifra_nosioca_dozvole"],
+        headers: ["id", "vrsta_resenja", "naziv_leka", "inn", "rezim_reizdavanja", "oblik_doza",
+            "broj_resenja", "datum_resenja", "datum_vazenja_resenja", "proizvodjac",
+            "nosilac_dozvole", "atc", "ean", "jkl", "vrsta", "sifra_proizvoda",
+            "sifra_proizvoda_u_saradnji", "oblik_saradnje", "sifra_proizvodjaca", "sifra_nosioca_dozvole"],
     };
 
     static csvExporter = new ExportToCsv(this.csvOptions);
@@ -80,11 +82,12 @@ export class FetchData extends Component {
     };
 
     static handleExportData = () => {
-        this.csvExporter.generateCsv(this.state.forecasts);
+        this.csvExporter.generateCsv(this.state.drugs);
     };
 
-    static renderDrugData(forecasts) {
-        return <MaterialReactTable columns={this.columns} data={forecasts} enableStickyHeader initialState={{ showColumnFilters: true }}
+    static renderDrugData(drugs) {
+        return <MaterialReactTable columns={this.columns} data={drugs}
+            enableStickyHeader initialState={{ showColumnFilters: true }}
             renderDetailPanel={({ row }) => (
                 <Box
                     sx={{
