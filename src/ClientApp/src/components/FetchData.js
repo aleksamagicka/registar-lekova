@@ -11,7 +11,6 @@ import {
 } from '@mui/material';
 
 export class FetchData extends Component {
-    static displayName = FetchData.name;
 
     constructor(props) {
         super(props);
