@@ -31,23 +31,6 @@ export class FetchData extends Component {
             accessorKey: 'nazivLeka',
             header: 'Naziv leka',
         },
-        /*{
-            accessorFn: (row) => `${row.nazivLeka}`, //accessorFn used to join multiple data into a single cell
-            id: 'nazivLeka', //id is still required when using accessorFn instead of accessorKey
-            header: 'Naziv Leka 2',
-            size: 250,
-            Cell: ({ renderedCellValue, row }) => (
-                <Box
-                    sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '1rem',
-                    }}
-                >
-                    <span>{renderedCellValue}</span>
-                </Box>
-            ),
-        },*/
         {
             accessorKey: 'inn',
             header: 'Sastav',
