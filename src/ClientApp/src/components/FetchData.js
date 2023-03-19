@@ -21,6 +21,24 @@ export class FetchData extends Component {
         this.populateDrugData();
     }
 
+    render() {
+        let contents = this.state.loading
+            ? <p><em>Učitava se...</em></p>
+            : FetchData.renderDrugData(this.state.drugs);
+
+        return (
+            <div>
+                {contents}
+            </div>
+        );
+    }
+
+    async populateDrugData() {
+        const response = await fetch('lekovi');
+        const data = await response.json();
+        this.setState({ drugs: data, loading: false });
+    }
+
     static columns = [
         {
             accessorKey: 'vrstaResenja',
@@ -185,21 +203,5 @@ export class FetchData extends Component {
         />;
     }
 
-    render() {
-        let contents = this.state.loading
-            ? <p><em>Učitava se...</em></p>
-            : FetchData.renderDrugData(this.state.drugs);
 
-        return (
-            <div>
-                {contents}
-            </div>
-        );
-    }
-
-    async populateDrugData() {
-        const response = await fetch('lekovi');
-        const data = await response.json();
-        this.setState({ drugs: data, loading: false });
-    }
 }
