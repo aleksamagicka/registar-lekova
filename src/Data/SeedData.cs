@@ -44,6 +44,10 @@ public static class SeedData
             {
                 isBadDataFound = true;
             },
+            MissingFieldFound = context =>
+            {
+                isBadDataFound = true;
+            },
             HasHeaderRecord = false
         };
 
