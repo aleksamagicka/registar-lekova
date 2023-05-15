@@ -45,22 +45,32 @@ export class FetchData extends Component {
         {
             accessorKey: 'vrstaResenja',
             header: 'Vrsta rešenja',
+            filterVariant: 'text',
+            filterFn: 'contains',
         },
         {
             accessorKey: 'nazivLeka',
             header: 'Naziv leka',
+            filterVariant: 'text',
+            filterFn: 'contains',
         },
         {
             accessorKey: 'inn',
             header: 'Sastav',
+            filterVariant: 'text',
+            filterFn: 'contains',
         },
         {
             accessorKey: 'rezimReizdavanja',
             header: 'Režim reizdavanja',
+            filterVariant: 'text',
+            filterFn: 'contains',
         },
         {
             accessorKey: 'vrsta',
             header: 'Vrsta leka',
+            filterVariant: 'text',
+            filterFn: 'contains',
         },
     ];
 
