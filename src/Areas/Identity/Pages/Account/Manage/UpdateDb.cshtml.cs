@@ -37,7 +37,7 @@ public class UpdateDbModel : PageModel
 
     public async Task<IActionResult> OnPostUploadAsync(IFormFile formFile)
     {
-        if (formFile.Length > 0)
+        if (formFile != null && formFile.Length > 0)
         {
             string contents = await new StreamReader(formFile.OpenReadStream()).ReadToEndAsync();
             bool success = SeedData.InsertLekovi(_context, contents, true);
@@ -47,12 +47,14 @@ public class UpdateDbModel : PageModel
             }
             else
             {
-                StatusMessage = "BAZA NIJE USPEŠNO UČITANA!";
+                StatusMessage = "GREŠKA: Fajl nije ispravan!";
             }
             
             return RedirectToPage();
         }
 
-        return BadRequest();
+        StatusMessage = "GREŠKA: Fajl nije odabran!";
+
+        return RedirectToPage();
     }
 }
