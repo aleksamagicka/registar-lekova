@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MaterialReactTable from 'material-react-table';
+//Import Material React Table Translations
+import { MRT_Localization_SR_LATN_RS } from 'material-react-table/locales/sr-Latn-RS';
 import Table from 'react-bootstrap/Table';
 import { ExportToCsv } from 'export-to-csv-fix-source-map';
 import FileDownloadIcon from '@mui/icons-material/FileDownload';
@@ -88,6 +90,7 @@ export class FetchData extends Component {
     static renderDrugData(drugs) {
         return <MaterialReactTable columns={this.columns} data={drugs}
             enableStickyHeader initialState={{ showColumnFilters: true }}
+            localization={MRT_Localization_SR_LATN_RS}
             renderDetailPanel={({ row }) => (
                 <Box
                     sx={{
