@@ -187,7 +187,6 @@ export class FetchData extends Component {
                 >
                     <Button
                         color="primary"
-                        //export all data that is currently in the table (ignore pagination, sorting, filtering, etc.)
                         onClick={this.handleExportData}
                         startIcon={<FileDownloadIcon />}
                         variant="contained"
@@ -196,7 +195,6 @@ export class FetchData extends Component {
                     </Button>
                     <Button
                         disabled={table.getPrePaginationRowModel().rows.length === 0}
-                        //export all rows, including from the next page, (still respects filtering and sorting)
                         onClick={() =>
                             this.handleExportRows(table.getPrePaginationRowModel().rows)
                         }
@@ -207,7 +205,6 @@ export class FetchData extends Component {
                     </Button>
                     <Button
                         disabled={table.getRowModel().rows.length === 0}
-                        //export all rows as seen on the screen (respects pagination, sorting, filtering, etc.)
                         onClick={() => this.handleExportRows(table.getRowModel().rows)}
                         startIcon={<FileDownloadIcon />}
                         variant="contained"
@@ -218,6 +215,4 @@ export class FetchData extends Component {
             )}
         />;
     }
-
-
 }
