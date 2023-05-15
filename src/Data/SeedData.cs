@@ -25,7 +25,7 @@ public static class SeedData
         CreateAdmin(userManager);
     }
 
-    public static void InsertLekovi(ApplicationDbContext context, string csvContents, bool dropLekovi = false)
+    public static bool InsertLekovi(ApplicationDbContext context, string csvContents, bool dropLekovi = false)
     {
         if (dropLekovi)
         {
@@ -34,11 +34,16 @@ public static class SeedData
 
         csvContents = WebUtility.HtmlDecode(csvContents);
 
+        bool isBadDataFound = false;
+
         var config = new CsvConfiguration(CultureInfo.InvariantCulture)
         {
             Delimiter = ";",
             Quote = '"',
-            BadDataFound = null,
+            BadDataFound = context =>
+            {
+                isBadDataFound = true;
+            },
             HasHeaderRecord = false
         };
 
@@ -50,6 +55,7 @@ public static class SeedData
         }
 
         context.SaveChanges();
+        return !isBadDataFound;
     }
 
     public static void CreateAdmin(UserManager<ApplicationUser> userManager)

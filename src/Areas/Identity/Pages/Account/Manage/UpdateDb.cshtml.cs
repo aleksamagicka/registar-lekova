@@ -40,8 +40,16 @@ public class UpdateDbModel : PageModel
         if (formFile.Length > 0)
         {
             string contents = await new StreamReader(formFile.OpenReadStream()).ReadToEndAsync();
-            SeedData.InsertLekovi(_context, contents, true);
-            StatusMessage = "Uspešno učitana nova baza!";
+            bool success = SeedData.InsertLekovi(_context, contents, true);
+            if (success)
+            {
+                StatusMessage = "Uspešno učitana nova baza!";
+            }
+            else
+            {
+                StatusMessage = "BAZA NIJE USPEŠNO UČITANA!";
+            }
+            
             return RedirectToPage();
         }
 
