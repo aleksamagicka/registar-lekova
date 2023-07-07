@@ -31,6 +31,7 @@ export class FetchData extends Component {
         return (
             <div>
                 {contents}
+                <br></br>
             </div>
         );
     }
