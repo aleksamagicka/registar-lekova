@@ -11,13 +11,10 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
         builder.Configuration.AddEnvironmentVariables();
 
-        // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ??
                                throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-
         builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(connectionString)
                 .LogTo(Console.WriteLine, LogLevel.Information)
@@ -25,17 +22,13 @@ public class Program
                 .EnableDetailedErrors()
             );
         builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
         builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
             .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApplicationDbContext>();
-
         builder.Services.AddIdentityServer()
             .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
         builder.Services.AddAuthentication()
             .AddIdentityServerJwt();
-
         builder.Services.AddControllersWithViews();
         builder.Services.AddRazorPages();
 
@@ -49,11 +42,9 @@ public class Program
             SeedData.Initialize(services);
         }
 
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
             app.UseMigrationsEndPoint();
         else
-            // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
 
         app.UseHttpsRedirection();
